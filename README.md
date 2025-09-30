@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# NeoGreens - Health Supplement Landing Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive landing page for NeoGreens, a health supplement product. This project was built using React and CSS with flexbox for layout and media queries for responsiveness.
 
 ## Available Scripts
 
