@@ -1,4 +1,7 @@
 import './index.css'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import { FaInstagram, FaFacebook  } from "react-icons/fa";
 import { FaXTwitter, FaLinkedin, FaCircleXmark   } from "react-icons/fa6";
@@ -10,7 +13,10 @@ import productPackage from '../../images/product-package.png'
 import concernImage1 from '../../images/concern-image-1.png'
 import concernImage2 from '../../images/concern-image-2.png'
 import solutionImage from '../../images/solution-image.png'
+import brainImage from "../../images/brain-icon.png"
+import stomachImage from '../../images/stomach-icon.png'
 
+import dummyPerson from '../../images/dummy-person.jpg'
 
 // Import feature icons
 import glutenFreeIcon from '../../images/gluten-free-icon.png'
@@ -24,6 +30,14 @@ import gutIcon from '../../images/gut-icon.png'
 import immunityIcon from '../../images/immunity-icon.png'
 import detoxIcon from '../../images/detox-icon.png'
 import nourishmentIcon from '../../images/nourishment-icon.png'
+
+
+const settings = {
+  dots: false,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  controles: true
+}
 
 const LandingPage = () => {
   // Features data
@@ -47,13 +61,13 @@ const LandingPage = () => {
   const healthConcerns = [
     { 
       id: 1, 
-      icon: energyIcon, // Using energy icon for brain/mental clarity
+      icon: brainImage, 
       title: 'Feel Foggy or Unfocused?', 
       description: 'Designed to support mental clarity with B12 and adaptogens.'
     },
     { 
       id: 2, 
-      icon: gutIcon, // Using gut icon for stomach/digestion
+      icon: stomachImage, 
       title: 'Bloating or Indigestion?', 
       description: 'Aids digestion with probiotics and digestive enzymes.'
     }
@@ -64,35 +78,35 @@ const LandingPage = () => {
     {
       id: 1,
       name: 'Kathi Koushal',
-      image: 'testimonial-1.png',
+      image: dummyPerson,
       quote: '"Finally, mental clarity that sticks with just one scoop!"',
       description: 'Between work and workouts, I never used to feel foggy or irritated. Now I never miss my morning scoop, and I\'m sharp, calm, and focused even on the toughest days.'
     },
     {
       id: 2,
       name: 'Mithun Roy',
-      image: 'testimonial-2.png',
+      image: dummyPerson,
       quote: '"No more bloating, only a lighter, happier gut!"',
       description: 'I\'ve tried everything for digestion, but nothing helped like NeoGreens. The probiotics and enzymes are gentle but mighty - my stomach feels balanced, refreshed, and energized!'
     },
     {
       id: 3,
       name: 'Jennifer',
-      image: 'testimonial-3.png',
+      image: dummyPerson,
       quote: '"Reset my routine inside and out!"',
       description: 'Ditching my multitabs for NeoGreens simplified my morning. Just one scoop gives me all I need to feel energized and ready to tackle the day.'
     },
     {
       id: 4,
       name: 'Harrison',
-      image: 'testimonial-4.png',
+      image: dummyPerson,
       quote: '"From sluggish to unstoppable!"',
       description: 'I was dragged down by sluggish mornings, lack of energy, poor focus, and digestive issues. NeoGreens turned that around. One daily scoop and I\'m more alert, active, and vibrant!'
     },
     {
       id: 5,
       name: 'Emma',
-      image: 'testimonial-5.png',
+      image: dummyPerson,
       quote: '"One scoop that travels with me!"',
       description: 'As a busy professional, I need nutrition that fits my on-the-go lifestyle. NeoGreens delivers more energy, better focus, and more resilience to life.'
     }
@@ -131,6 +145,8 @@ const LandingPage = () => {
           <h2 className="nature-heading">Backed by Nature.<br/>Built for Your Routine.</h2>
           <p className="nature-description">NeoGreens goes where you go - from home to the office to the gym. One scoop a day will help you overcome all your wellness roadblocks with ease.</p>
           <button type="button" className="nature-buy-button">Buy Now</button>
+          <br />
+          <img className='nature-product' src={productPackage} alt="product" />
         </div>
 
         <div className="health-concerns">
@@ -184,7 +200,7 @@ const LandingPage = () => {
           <tbody>
             <tr>
               <td>Probiotic Content</td>
-              <td className="check"><IoCheckmarkCircle /></td>
+              <td className="check"><IoCheckmarkCircle className='check-icon' /></td>
               <td className="check"><IoCheckmarkCircle /></td>
               <td className="check"><IoCheckmarkCircle /></td>
               <td className="cross"><FaCircleXmark /></td>
@@ -280,26 +296,23 @@ const LandingPage = () => {
 
       {/* Testimonials Section */}
       <section className="testimonials-section">
-        <h2 className="testimonials-heading">What Choosing Better Looks Like</h2>
-        <p className="testimonials-subheading">Real stories from real customers who made the switch to NeoGreens</p>
-        
-        <div className="testimonials-carousel">
-          {testimonials.map(testimonial => (
-            <div key={testimonial.id} className="testimonial-card">
-              <div className="testimonial-quote">{testimonial.quote}</div>
-              <p className="testimonial-description">{testimonial.description}</p>
-              <div className="testimonial-author">
-                <img src={testimonial.image} alt={testimonial.name} className="testimonial-author-image"/>
-                <p className="testimonial-author-name">{testimonial.name}</p>
-              </div>
-            </div>
-          ))}
-          <div className="carousel-controls">
-            <button className="carousel-prev">←</button>
-            <button className="carousel-next">→</button>
-          </div>
+        <div className="slider-container slider">
+          <Slider {...settings}>
+              {testimonials.map(testimonial => (
+                <div key={testimonial.id} className="testimonial-card">
+                  <div className="testimonial-quote">{testimonial.quote}</div>
+                  <p className="testimonial-description">{testimonial.description}</p>
+                  <div className="testimonial-author">
+                    <img src={testimonial.image} alt={testimonial.name} className="testimonial-author-image"/>
+                    <p className="testimonial-author-name">{testimonial.name}</p>
+                  </div>
+                </div>
+              ))}
+          </Slider>
         </div>
       </section>
+
+
 
       {/* CTA Section */}
       <section className="cta-section">
