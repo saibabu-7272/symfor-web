@@ -2,6 +2,8 @@
 
 A responsive landing page for NeoGreens, a health supplement product. This project was built using React and CSS with flexbox for layout and media queries for responsiveness.
 
+### Live Link: [https://symfor-neogreens.vercel.app/](https://symfor-neogreens.vercel.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
